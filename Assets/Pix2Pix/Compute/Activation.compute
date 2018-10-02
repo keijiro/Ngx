@@ -1,0 +1,31 @@
+// Activation functions
+// https://github.com/keijiro/Pix2Pix
+
+#pragma enable_d3d11_debug_symbols
+
+#pragma kernel Relu
+#pragma kernel LeakyRelu
+#pragma kernel Tanh
+
+Buffer<float> Input;
+RWBuffer<float> Output;
+float Alpha;
+
+[numthreads(256, 1, 1)]
+void Relu(uint id : SV_DispatchThreadID)
+{
+    Output[id] = max(0, Input[id]);
+}
+
+[numthreads(256, 1, 1)]
+void LeakyRelu(uint id : SV_DispatchThreadID)
+{
+    float v = Input[id];
+    Output[id] = max(v, v * Alpha);
+}
+
+[numthreads(256, 1, 1)]
+void Tanh(uint id : SV_DispatchThreadID)
+{
+    Output[id] = tanh(Input[id]);
+}

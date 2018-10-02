@@ -1,0 +1,24 @@
+// Tensor concatenation kernels
+// https://github.com/keijiro/Pix2Pix
+
+#pragma enable_d3d11_debug_symbols
+
+#pragma kernel Concat
+
+Buffer<float> Input1;
+Buffer<float> Input2;
+RWBuffer<float> Output;
+
+uint3 InputShape;
+
+[numthreads(64, 4, 1)]
+void Concat(uint2 tid : SV_DispatchThreadID)
+{
+    const uint stride = InputShape.z;
+
+    const uint offs_i = tid.x + tid.y * stride;
+    const uint offs_o = tid.x + tid.y * stride * 2;
+
+    Output[offs_o         ] = Input1[offs_i];
+    Output[offs_o + stride] = Input2[offs_i];
+}
