@@ -186,9 +186,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 032fa37841eb9064fbb01afdd431b7bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weightFileName: beeple2feedback.pict
+  _weightFileName: vjloop1feedback.pict
+  _blendMode: 0
   _injection: 1
-  _feedback: 1
+  _feedback: 0.96
   _shader: {fileID: 4800000, guid: b0b6ed0a8d22bb94a815325db3e167a3, type: 3}
 --- !u!20 &1335466533
 Camera:

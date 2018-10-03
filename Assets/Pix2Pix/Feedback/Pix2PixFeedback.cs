@@ -5,7 +5,10 @@ namespace Pix2Pix
 {
     class Pix2PixFeedback : MonoBehaviour
     {
+        public enum BlendMode { Multiply, Screen, Overlay, HardLight, SoftLight }
+
         [SerializeField] string _weightFileName = null;
+        [SerializeField] BlendMode _blendMode = BlendMode.Multiply;
 
         [SerializeField, Range(0, 1)] float _injection = 1;
         [SerializeField, Range(0, 1)] float _feedback = 1;
@@ -61,7 +64,7 @@ namespace Pix2Pix
 
             _material.SetTexture("_FeedbackTex", _temporaryRT);
             _material.SetVector("_Opacity", new Vector2(_injection, _feedback));
-            Graphics.Blit(source, _feedbackRT, _material);
+            Graphics.Blit(source, _feedbackRT, _material, (int)_blendMode);
 
             Graphics.Blit(_feedbackRT, destination);
         }
