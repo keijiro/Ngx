@@ -25,10 +25,10 @@ namespace Pix2Pix
             _weightTable = Pix2Pix.WeightReader.ReadFromFile(filePath);
             _generator = new Pix2Pix.Generator(_weightTable);
 
-            _feedbackRT = new RenderTexture(256, 256, 0);
+            _feedbackRT = new RenderTexture(256, 256, 0, RenderTextureFormat.ARGBFloat);
             _feedbackRT.Create();
 
-            _temporaryRT = new RenderTexture(256, 256, 0);
+            _temporaryRT = new RenderTexture(256, 256, 0, RenderTextureFormat.ARGBFloat);
             _temporaryRT.enableRandomWrite = true;
             _temporaryRT.Create();
 
