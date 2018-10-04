@@ -6,37 +6,40 @@ half2 _Opacity;
 
 half4 frag(v2f_img i) : SV_Target
 {
-    half4 c0 = tex2D(_MainTex    , i.uv) * _Opacity.x;
-    half4 c1 = tex2D(_FeedbackTex, i.uv) * _Opacity.y;
+    half3 c0 = tex2D(_MainTex    , i.uv).rgb * _Opacity.x;
+    half3 c1 = tex2D(_FeedbackTex, i.uv).rgb * _Opacity.y;
+    half3 c2;
 
 #if defined(BLEND_MULTIPLY)
 
-    return c0 * c1;
+    c2 = c0 * c1;
 
 #elif defined(BLEND_SCREEN)
 
-    return 1 - (1 - c0) * (1 - c1);
+    c2 = 1 - (1 - c0) * (1 - c1);
 
 #elif defined(BLEND_SOFTLIGHT)
 
-    half4 a = c0 * c1 * 2 + (1 - c1 * 2) * c0 * c0;
-    half4 b = (1 - c1) * c0 * 2 + (c1 * 2 - 1) * sqrt(c0);
-    return lerp(a, b, c1 > 0.5);
+    half3 a = c0 * c1 * 2 + (1 - c1 * 2) * c0 * c0;
+    half3 b = (1 - c1) * c0 * 2 + (c1 * 2 - 1) * sqrt(c0);
+    c2 = lerp(a, b, c1 > 0.5);
 
 #else
 
-    half4 a = c0 * c1 * 2;
-    half4 b = 1 - (1 - c0) * (1 - c1) * 2;
+    half3 a = c0 * c1 * 2;
+    half3 b = 1 - (1 - c0) * (1 - c1) * 2;
 
 #if defined(BLEND_OVERLAY)
 
-    return lerp(a, b, c0 > 0.5);
+    c2 = lerp(a, b, c0 > 0.5);
 
 #else // BLEND_HARDLIGHT
 
-    return lerp(a, b, c1 > 0.5);
+    c2 = lerp(a, b, c1 > 0.5);
 
 #endif
 
 #endif
+
+    return half4(c2, 1);
 }

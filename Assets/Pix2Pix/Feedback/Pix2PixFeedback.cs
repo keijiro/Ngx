@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Pix2Pix
 {
+    [ImageEffectOpaque]
     class Pix2PixFeedback : MonoBehaviour
     {
         public enum BlendMode { Multiply, Screen, Overlay, HardLight, SoftLight }
@@ -29,9 +30,11 @@ namespace Pix2Pix
             _generator = new Pix2Pix.Generator(_weightTable);
 
             _feedbackRT = new RenderTexture(256, 256, 0, RenderTextureFormat.ARGBFloat);
+            _feedbackRT.filterMode = FilterMode.Point;
             _feedbackRT.Create();
 
             _temporaryRT = new RenderTexture(256, 256, 0, RenderTextureFormat.ARGBFloat);
+            _temporaryRT.filterMode = FilterMode.Point;
             _temporaryRT.enableRandomWrite = true;
             _temporaryRT.Create();
 
