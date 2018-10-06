@@ -61,8 +61,13 @@ namespace Pix2Pix
                 var info = shapes[i];
                 length = info.shape.Aggregate(1, (acc, x) => acc * x);
 
+                UnityEngine.Profiling.Profiler.BeginSample("Weight data decoding");
+
+                var bytes = reader.ReadBytes(length);
                 var data = new float[length];
-                for (var j = 0; j < length; j++) data[j] = values[reader.ReadByte()];
+                for (var j = 0; j < length; j++) data[j] = values[bytes[j]];
+
+                UnityEngine.Profiling.Profiler.EndSample();
 
                 var tensor = new Tensor(new Shape(info.shape), data);
 
