@@ -14,22 +14,22 @@ namespace Pix2Pix
     {
         #region Constructor and IDisposable implementation
 
-        public Generator(Dictionary<string, Tensor> weights)
+        public Generator()
         {
-            // Initialize tensor objects with empty tensors.
+            // Temporary tensors
             for (var i = 0; i < 8; i ++) _skip[i] = new Tensor();
             _temp1 = new Tensor();
             _temp2 = new Tensor();
 
-            // Load all layer weights from the given dictionary.
+            // Keys for weight table
             _encoders[0] = new Layer {
-                Kernel = weights["generator/encoder_1/conv2d/kernel"],
-                Bias   = weights["generator/encoder_1/conv2d/bias"]
+                Kernel = "generator/encoder_1/conv2d/kernel",
+                Bias   = "generator/encoder_1/conv2d/bias"
             };
 
             _decoders[0] = new Layer {
-                Kernel = weights["generator/decoder_1/conv2d_transpose/kernel"],
-                Bias   = weights["generator/decoder_1/conv2d_transpose/bias"]
+                Kernel = "generator/decoder_1/conv2d_transpose/kernel",
+                Bias   = "generator/decoder_1/conv2d_transpose/bias"
             };
 
             for (var i = 1; i < 8; i++)
@@ -37,19 +37,19 @@ namespace Pix2Pix
                 var scope = "generator/encoder_" + (i + 1);
 
                 _encoders[i] = new Layer {
-                    Kernel = weights[scope + "/conv2d/kernel"],
-                    Bias   = weights[scope + "/conv2d/bias"],
-                    Beta   = weights[scope + "/batch_normalization/beta"],
-                    Gamma  = weights[scope + "/batch_normalization/gamma"]
+                    Kernel = scope + "/conv2d/kernel",
+                    Bias   = scope + "/conv2d/bias",
+                    Beta   = scope + "/batch_normalization/beta",
+                    Gamma  = scope + "/batch_normalization/gamma"
                 };
 
                 scope = "generator/decoder_" + (i + 1);
 
                 _decoders[i] = new Layer {
-                    Kernel = weights[scope + "/conv2d_transpose/kernel"],
-                    Bias   = weights[scope + "/conv2d_transpose/bias"],
-                    Beta   = weights[scope + "/batch_normalization/beta"],
-                    Gamma  = weights[scope + "/batch_normalization/gamma"]
+                    Kernel = scope + "/conv2d_transpose/kernel",
+                    Bias   = scope + "/conv2d_transpose/bias",
+                    Beta   = scope + "/batch_normalization/beta",
+                    Gamma  = scope + "/batch_normalization/gamma"
                 };
             }
         }
@@ -70,7 +70,7 @@ namespace Pix2Pix
         static readonly int[] _decoderCosts = { 150, 150, 150, 150, 75, 20, 6, 0 };
 
         // Encoder/decoder layers
-        struct Layer { public Tensor Kernel, Bias, Beta, Gamma; }
+        struct Layer { public string Kernel, Bias, Beta, Gamma; }
         Layer[] _encoders = new Layer[8];
         Layer[] _decoders = new Layer[8];
 
@@ -84,6 +84,8 @@ namespace Pix2Pix
         #endregion
 
         #region Public properties and methods
+
+        public Dictionary<string, Tensor> WeightTable { get; set; }
 
         public bool Running { get { return _progress > 0 && _progress < 16; } }
 
@@ -100,24 +102,26 @@ namespace Pix2Pix
 
         public int Step()
         {
+            var w = WeightTable;
+
             if (_progress == 0)
             {
                 var layer = _encoders[0];
-                Math.Conv2D(_temp1, layer.Kernel, layer.Bias, _skip[0]);
+                Math.Conv2D(_temp1, w[layer.Kernel], w[layer.Bias], _skip[0]);
             }
             else if (_progress < 8)
             {
                 var layer = _encoders[_progress];
                 Math.LeakyRelu(_skip[_progress - 1], 0.2f, _temp1);
-                Math.Conv2D(_temp1, layer.Kernel, layer.Bias, _temp2);
-                Math.BatchNorm(_temp2, layer.Gamma, layer.Beta, _skip[_progress]);
+                Math.Conv2D(_temp1, w[layer.Kernel], w[layer.Bias], _temp2);
+                Math.BatchNorm(_temp2, w[layer.Gamma], w[layer.Beta], _skip[_progress]);
             }
             else if (_progress == 8)
             {
                 var layer = _decoders[7];
                 Math.Relu(_skip[7], _temp1);
-                Math.Deconv2D(_temp1, layer.Kernel, layer.Bias, _temp2);
-                Math.BatchNorm(_temp2, layer.Gamma, layer.Beta, _temp1);
+                Math.Deconv2D(_temp1, w[layer.Kernel], w[layer.Bias], _temp2);
+                Math.BatchNorm(_temp2, w[layer.Gamma], w[layer.Beta], _temp1);
             }
             else if (_progress < 15)
             {
@@ -125,15 +129,15 @@ namespace Pix2Pix
                 var layer = _decoders[i];
                 Math.Concat(_temp1, _skip[i], _temp2);
                 Math.Relu(_temp2, _temp1);
-                Math.Deconv2D(_temp1, layer.Kernel, layer.Bias, _temp2);
-                Math.BatchNorm(_temp2, layer.Gamma, layer.Beta, _temp1);
+                Math.Deconv2D(_temp1, w[layer.Kernel], w[layer.Bias], _temp2);
+                Math.BatchNorm(_temp2, w[layer.Gamma], w[layer.Beta], _temp1);
             }
             else
             {
                 var layer = _decoders[0];
                 Math.Concat(_temp1, _skip[0], _temp2);
                 Math.Relu(_temp2, _temp1);
-                Math.Deconv2D(_temp1, layer.Kernel, layer.Bias, _temp2);
+                Math.Deconv2D(_temp1, w[layer.Kernel], w[layer.Bias], _temp2);
                 Math.Tanh(_temp2, _temp1);
             }
 

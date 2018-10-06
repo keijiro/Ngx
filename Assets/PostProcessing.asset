@@ -18,6 +18,69 @@ MonoBehaviour:
   - {fileID: 114435982634775158}
   - {fileID: 114401854113076164}
   - {fileID: 114609972126710938}
+  - {fileID: 114111891746047604}
+--- !u!114 &114111891746047604
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9746f408d6f1e994fa5e88f4f770670f, type: 3}
+  m_Name: Recolor
+  m_EditorClassIdentifier: 
+  active: 0
+  enabled:
+    overrideState: 1
+    value: 1
+  edgeColor:
+    overrideState: 1
+    value: {r: 0, g: 0, b: 0, a: 1}
+  edgeSource:
+    overrideState: 1
+    value: 0
+  edgeThreshold:
+    overrideState: 1
+    value: 1
+  edgeContrast:
+    overrideState: 1
+    value: 0.532
+  fillGradient:
+    overrideState: 1
+    value:
+      serializedVersion: 2
+      key0: {r: 0, g: 0, b: 0.5754717, a: 1}
+      key1: {r: 1, g: 0.7075009, b: 0, a: 1}
+      key2: {r: 1, g: 1, b: 1, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 37586
+      ctime1: 52428
+      ctime2: 65535
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 1
+      m_NumColorKeys: 3
+      m_NumAlphaKeys: 2
+  fillOpacity:
+    overrideState: 1
+    value: 1
 --- !u!114 &114313390391338104
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1395,7 +1458,7 @@ MonoBehaviour:
     defaultState: 1
   intensity:
     overrideState: 1
-    value: 0.45
+    value: 0.4
   fastMode:
     overrideState: 0
     value: 0
@@ -1420,13 +1483,13 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.532
+    value: 0.8
   size:
     overrideState: 1
-    value: 0.9
+    value: 1
   lumContrib:
     overrideState: 1
-    value: 0.663
+    value: 0.45
 --- !u!114 &114609972126710938
 MonoBehaviour:
   m_ObjectHideFlags: 3

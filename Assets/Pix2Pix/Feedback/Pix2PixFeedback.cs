@@ -8,7 +8,7 @@ namespace Pix2Pix
     {
         public enum BlendMode { Multiply, Screen, Overlay, HardLight, SoftLight }
 
-        [SerializeField] string _weightFileName = null;
+        [SerializeField] string [] _weightFileNames = null;
         [SerializeField] BlendMode _blendMode = BlendMode.Multiply;
 
         [SerializeField, Range(0, 1)] float _injection = 1;
@@ -16,7 +16,8 @@ namespace Pix2Pix
 
         [SerializeField, HideInInspector] Shader _shader = null;
 
-        Dictionary<string, Pix2Pix.Tensor> _weightTable;
+        Dictionary<string, Pix2Pix.Tensor> [] _weights;
+
         Pix2Pix.Generator _generator;
 
         RenderTexture _feedbackRT, _temporaryRT;
@@ -25,9 +26,13 @@ namespace Pix2Pix
 
         void Start()
         {
-            var filePath = System.IO.Path.Combine(Application.streamingAssetsPath, _weightFileName);
-            _weightTable = Pix2Pix.WeightReader.ReadFromFile(filePath);
-            _generator = new Pix2Pix.Generator(_weightTable);
+            _weights = new Dictionary<string, Pix2Pix.Tensor>[_weightFileNames.Length];
+
+            for (var i = 0; i < _weightFileNames.Length; i++)
+                _weights[i] = Pix2Pix.WeightReader.ReadFromFile
+                    (System.IO.Path.Combine(Application.streamingAssetsPath, _weightFileNames[i]));
+
+            _generator = new Pix2Pix.Generator();
 
             _feedbackRT = new RenderTexture(256, 256, 0, RenderTextureFormat.ARGBFloat);
             _feedbackRT.filterMode = FilterMode.Point;
@@ -44,7 +49,8 @@ namespace Pix2Pix
         void OnDestroy()
         {
             _generator.Dispose();
-            Pix2Pix.WeightReader.DisposeTable(_weightTable);
+
+            foreach (var w in _weights) Pix2Pix.WeightReader.DisposeTable(w);
 
             Destroy(_feedbackRT);
             Destroy(_temporaryRT);
@@ -53,14 +59,15 @@ namespace Pix2Pix
 
         void OnRenderImage(RenderTexture source, RenderTexture destination)
         {
-            _generator.Start(_feedbackRT);
+            _generator.WeightTable =
+                _weights[(Time.frameCount / 30) % _weights.Length];
 
+            _generator.Start(_feedbackRT);
             while (true)
             {
                 _generator.Step();
                 if (!_generator.Running) break;
             }
-
             _generator.GetResult(_temporaryRT);
 
             Pix2Pix.GpuBackend.ExecuteAndClearCommandBuffer();
