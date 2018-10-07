@@ -459,8 +459,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weightFileNames:
-  - splash1feedback.pict
-  - vjloop2feedback.pict
+  - firedancefeedback.pict
+  - beeple7feedback.pict
   _shader: {fileID: 4800000, guid: b0b6ed0a8d22bb94a815325db3e167a3, type: 3}
 --- !u!4 &1335466534
 Transform:
