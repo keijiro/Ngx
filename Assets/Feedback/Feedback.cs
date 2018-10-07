@@ -9,6 +9,7 @@ namespace Pix2Pix
 
         [SerializeField, Range(0, 2)] float _feedbackRate = 1;
         [SerializeField, Range(0.01f, 2)] float _transitionTime = 0.5f;
+        [SerializeField, Range(0, 1)] float _noiseInjection = 0;
         [SerializeField, Range(0, 16)] int _modelIndex = 0;
         [SerializeField] string [] _modelFiles = null;
         [SerializeField, HideInInspector] Shader _shader = null;
@@ -76,19 +77,6 @@ namespace Pix2Pix
 
         void Update()
         {
-            // Set the currently selected model to the generator.
-            _generator.WeightTable = _models[_modelIndex % _models.Length];
-
-            // Pix2Pix generation
-            _generator.Start(_delayRT);
-            while (true)
-            {
-                _generator.Step();
-                if (!_generator.Running) break;
-            }
-            _generator.GetResult(_tempRT);
-            Pix2Pix.GpuBackend.ExecuteAndClearCommandBuffer();
-
             // Was the model changed?
             if (_modelIndex != _prevModelIndex)
             {
@@ -99,12 +87,30 @@ namespace Pix2Pix
             // Transition animation
             _transition += Time.deltaTime;
 
+            // Blending parameters
             var alpha = Mathf.Clamp01(_transition / _transitionTime);
-            var blendParams = new Vector2(1 - alpha, alpha) * _feedbackRate;
+            var blendParams = new Vector3(_noiseInjection, 1 - alpha, alpha);
+            blendParams *= _feedbackRate;
+            _material.SetVector("_BlendParams", blendParams);
+
+            // External noise injection
+            Graphics.Blit(_delayRT, _tempRT, _material, 0);
+
+            // Set the currently selected model to the generator.
+            _generator.WeightTable = _models[_modelIndex % _models.Length];
+
+            // Pix2Pix generation
+            _generator.Start(_tempRT);
+            while (true)
+            {
+                _generator.Step();
+                if (!_generator.Running) break;
+            }
+            _generator.GetResult(_tempRT);
+            Pix2Pix.GpuBackend.ExecuteAndClearCommandBuffer();
 
             // Blend with the previous frame.
             _material.SetTexture("_BlendTex", _tempRT);
-            _material.SetVector("_BlendParams", blendParams);
             Graphics.Blit(_delayRT, _backRT, _material, 1);
 
             var rt = _backRT;
@@ -116,7 +122,7 @@ namespace Pix2Pix
         {
             if ((Camera.current.cullingMask & (1 << gameObject.layer)) == 0) return;
             _material.SetTexture("_MainTex", _delayRT);
-            _material.SetPass(0);
+            _material.SetPass(2);
             Graphics.DrawProcedural(MeshTopology.Triangles, 3, 1);
         }
 

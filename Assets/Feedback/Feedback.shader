@@ -9,10 +9,25 @@ Shader "Hidden/Pix2Pix/Feedback"
     CGINCLUDE
 
     #include "UnityCG.cginc"
+    #include "SimplexNoise3D.hlsl"
 
     sampler2D _MainTex;
     sampler2D _BlendTex;
-    half2 _BlendParams;
+    half3 _BlendParams;
+
+    half4 FragmentInject(v2f_img i) : SV_Target
+    {
+        half4 c = tex2D(_MainTex, i.uv);
+        half n = snoise(float3(i.uv * 30, _Time.y));
+        return saturate(c + n * _BlendParams.x);
+    }
+
+    half4 FragmentBlend(v2f_img i) : SV_Target
+    {
+        half4 c1 = tex2D(_MainTex, i.uv) * _BlendParams.y;
+        half4 c2 = tex2D(_BlendTex, i.uv) * _BlendParams.z;
+        return saturate(c1 + c2);
+    }
 
     void VertexBlit(
         uint vid : SV_VertexID,
@@ -35,13 +50,6 @@ Shader "Hidden/Pix2Pix/Feedback"
         return tex2D(_MainTex, texcoord);
     }
 
-    half4 FragmentBlend(v2f_img i) : SV_Target
-    {
-        half4 c1 = tex2D(_MainTex, i.uv) * _BlendParams.x;
-        half4 c2 = tex2D(_BlendTex, i.uv) * _BlendParams.y;
-        return saturate(c1 + c2);
-    }
-
     ENDCG
 
     SubShader
@@ -50,8 +58,8 @@ Shader "Hidden/Pix2Pix/Feedback"
         Pass
         {
             CGPROGRAM
-            #pragma vertex VertexBlit
-            #pragma fragment FragmentBlit
+            #pragma vertex vert_img
+            #pragma fragment FragmentInject
             ENDCG
         }
         Pass
@@ -59,6 +67,13 @@ Shader "Hidden/Pix2Pix/Feedback"
             CGPROGRAM
             #pragma vertex vert_img
             #pragma fragment FragmentBlend
+            ENDCG
+        }
+        Pass
+        {
+            CGPROGRAM
+            #pragma vertex VertexBlit
+            #pragma fragment FragmentBlit
             ENDCG
         }
     }
