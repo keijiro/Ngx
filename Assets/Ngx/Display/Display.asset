@@ -17,6 +17,7 @@ MonoBehaviour:
   - {fileID: 114472357944697230}
   - {fileID: 114435982634775158}
   - {fileID: 114401854113076164}
+  - {fileID: 114729570717311486}
 --- !u!114 &114313390391338104
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1426,3 +1427,25 @@ MonoBehaviour:
   lumContrib:
     overrideState: 1
     value: 0.45
+--- !u!114 &114729570717311486
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965402543e1b5d648817ab9e2aca91f8, type: 3}
+  m_Name: ColorMixer
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  intensity:
+    overrideState: 1
+    value: 0
+  randomSeed:
+    overrideState: 1
+    value: 242

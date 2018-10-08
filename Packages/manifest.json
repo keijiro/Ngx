@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.unity.mathematics": "0.0.12-preview.19",
     "com.unity.package-manager-ui": "2.0.1",
     "com.unity.modules.imgui": "1.0.0",
     "com.unity.modules.jsonserialize": "1.0.0",
