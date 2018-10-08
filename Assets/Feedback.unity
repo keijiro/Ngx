@@ -459,13 +459,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 032fa37841eb9064fbb01afdd431b7bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mixParameter: 0
   _feedbackRate: 1
   _transitionTime: 0.5
   _noiseInjection: 0
   _modelIndex: 0
   _modelFiles:
-  - splash1
-  - train1
+  - firedance
+  - vjloop2
   _shader: {fileID: 4800000, guid: b0b6ed0a8d22bb94a815325db3e167a3, type: 3}
 --- !u!4 &1335466534
 Transform:
