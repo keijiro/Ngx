@@ -12,21 +12,14 @@ Shader "Hidden/Pix2Pix/Feedback"
     #include "SimplexNoise3D.hlsl"
 
     sampler2D _MainTex;
-    sampler2D _BlendTex;
-    half3 _BlendParams;
+
+    half4 _FeedbackParams; // feedback rate, noise frequency/speed/strength
 
     half4 FragmentInject(v2f_img i) : SV_Target
     {
-        half4 c = tex2D(_MainTex, i.uv);
-        half n = snoise(float3(i.uv * 30, _Time.y));
-        return saturate(c + n * _BlendParams.x);
-    }
-
-    half4 FragmentBlend(v2f_img i) : SV_Target
-    {
-        half4 c1 = tex2D(_MainTex, i.uv) * _BlendParams.y;
-        half4 c2 = tex2D(_BlendTex, i.uv) * _BlendParams.z;
-        return saturate(c1 + c2);
+        half4 c = tex2D(_MainTex, i.uv) * _FeedbackParams.x;
+        half n = snoise(float3(i.uv, _Time.y) * _FeedbackParams.yyz);
+        return saturate(c + n * _FeedbackParams.w);
     }
 
     void VertexBlit(
@@ -60,13 +53,6 @@ Shader "Hidden/Pix2Pix/Feedback"
             CGPROGRAM
             #pragma vertex vert_img
             #pragma fragment FragmentInject
-            ENDCG
-        }
-        Pass
-        {
-            CGPROGRAM
-            #pragma vertex vert_img
-            #pragma fragment FragmentBlend
             ENDCG
         }
         Pass
