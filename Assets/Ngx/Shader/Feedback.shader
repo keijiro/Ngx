@@ -1,4 +1,4 @@
-Shader "Hidden/Pix2Pix/Feedback"
+Shader "Hidden/Ngx/Feedback"
 {
     Properties
     {

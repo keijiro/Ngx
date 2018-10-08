@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using Pix2Pix;
 
-namespace Pix2PixFeedback
+namespace Ngx
 {
     public class MixGenerator : System.IDisposable
     {

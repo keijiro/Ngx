@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace Pix2PixFeedback
+namespace Ngx
 {
     class Feedback : MonoBehaviour
     {
