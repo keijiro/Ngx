@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: 1335466534}
   - component: {fileID: 1335466532}
   m_Layer: 0
-  m_Name: Pix2Pix Feedback
+  m_Name: Feedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -459,11 +459,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 032fa37841eb9064fbb01afdd431b7bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _modelIndex1: 0
+  _modelIndex2: 1
   _mixParameter: 0
   _feedbackRate: 1
   _noiseInjection: 0
-  _modelIndex1: 0
-  _modelIndex2: 1
   _modelFiles:
   - vjloop1
   - fireworks1
@@ -481,7 +481,7 @@ Transform:
   m_Children:
   - {fileID: 1073631413}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1717471781
 GameObject:
@@ -627,7 +627,7 @@ Transform:
   m_Children:
   - {fileID: 769678663}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1919919249
 GameObject:

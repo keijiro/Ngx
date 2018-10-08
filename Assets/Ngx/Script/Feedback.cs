@@ -7,6 +7,7 @@ namespace Ngx
     {
         #region Editable attributes
 
+        [Space]
         [SerializeField, Range(0, 16)] int _modelIndex1 = 0;
         [SerializeField, Range(0, 16)] int _modelIndex2 = 1;
         [SerializeField, Range(0, 1)] float _mixParameter = 0;
@@ -16,6 +17,35 @@ namespace Ngx
         [Space]
         [SerializeField] string [] _modelFiles = null;
         [SerializeField, HideInInspector] Shader _shader = null;
+
+        #endregion
+
+        #region Public properties
+
+        public int ModelIndex1 {
+            get { return _modelIndex1; }
+            set { _modelIndex1 = value; }
+        }
+
+        public int ModelIndex2 {
+            get { return _modelIndex2; }
+            set { _modelIndex2 = value; }
+        }
+
+        public float MixParameter {
+            get { return _mixParameter; }
+            set { _mixParameter = value; }
+        }
+
+        public float FeedbackRate {
+            get { return _feedbackRate; }
+            set { _feedbackRate = value; }
+        }
+
+        public float NoiseInjection {
+            get { return _noiseInjection; }
+            set { _noiseInjection = value; }
+        }
 
         #endregion
 
