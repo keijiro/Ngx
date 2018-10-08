@@ -70,6 +70,21 @@ namespace Pix2Pix
             return output;
         }
 
+        // Tensor blending function
+
+        public static void Blend(Tensor input1, Tensor input2, float param, Tensor output)
+        {
+            output.Reset(input1.Shape);
+            GpuBackend.InvokeBlend(input1, input2, param, output);
+        }
+
+        public static Tensor Blend(Tensor input1, Tensor input2, float param)
+        {
+            var output = new Tensor(input1.Shape);
+            Blend(input1, input2, param, output);
+            return output;
+        }
+
         // Batch normalization
 
         public static void BatchNorm(Tensor input, Tensor scale, Tensor offset, Tensor output)

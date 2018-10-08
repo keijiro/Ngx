@@ -14,6 +14,8 @@ namespace Pix2PixFeedback
             for (var i = 0; i < 8; i ++) _skip[i] = new Tensor();
             _temp1 = new Tensor();
             _temp2 = new Tensor();
+            _temp3 = new Tensor();
+            _temp4 = new Tensor();
 
             // Keys for weight table
             _encoders[0] = new Layer {
@@ -53,6 +55,8 @@ namespace Pix2PixFeedback
             foreach (var t in _skip) t.Dispose();
             _temp1.Dispose();
             _temp2.Dispose();
+            _temp3.Dispose();
+            _temp4.Dispose();
         }
 
         #endregion
@@ -66,8 +70,7 @@ namespace Pix2PixFeedback
 
         // Temporary tensors
         Tensor[] _skip = new Tensor[8];
-        Tensor _temp1;
-        Tensor _temp2;
+        Tensor _temp1, _temp2, _temp3, _temp4;
 
         #endregion
 
@@ -79,49 +82,61 @@ namespace Pix2PixFeedback
 
         public void Generate(Texture input, RenderTexture output)
         {
+            var w1 = WeightTable1;
+            var w2 = WeightTable2;
+
             Image.ConvertToTensor(input, _temp1);
 
-            var edge = Mathf.RoundToInt(MixParameter * 8);
-
             {
-                var layer = _encoders[0];
-                var w = edge > 0 ? WeightTable2 : WeightTable1;
-                Math.Conv2D(_temp1, w[layer.Kernel], w[layer.Bias], _skip[0]);
+                var l = _encoders[0];
+                Math.Blend(w1[l.Kernel], w2[l.Kernel], MixParameter, _temp3);
+                Math.Blend(w1[l.Bias  ], w2[l.Bias  ], MixParameter, _temp4);
+                Math.Conv2D(_temp1, _temp3, _temp4, _skip[0]);
             }
 
             for (var i = 1; i < 8; i++)
             {
-                var layer = _encoders[i];
-                var w = edge > i ? WeightTable2 : WeightTable1;
+                var l = _encoders[i];
                 Math.LeakyRelu(_skip[i - 1], 0.2f, _temp1);
-                Math.Conv2D(_temp1, w[layer.Kernel], w[layer.Bias], _temp2);
-                Math.BatchNorm(_temp2, w[layer.Gamma], w[layer.Beta], _skip[i]);
+                Math.Blend(w1[l.Kernel], w2[l.Kernel], MixParameter, _temp3);
+                Math.Blend(w1[l.Bias  ], w2[l.Bias  ], MixParameter, _temp4);
+                Math.Conv2D(_temp1, _temp3, _temp4, _temp2);
+                Math.Blend(w1[l.Gamma], w2[l.Gamma], MixParameter, _temp3);
+                Math.Blend(w1[l.Beta ], w2[l.Beta ], MixParameter, _temp4);
+                Math.BatchNorm(_temp2, _temp3, _temp4, _skip[i]);
             }
 
             {
-                var layer = _decoders[7];
-                var w = edge > 7 ? WeightTable2 : WeightTable1;
+                var l = _decoders[7];
                 Math.Relu(_skip[7], _temp1);
-                Math.Deconv2D(_temp1, w[layer.Kernel], w[layer.Bias], _temp2);
-                Math.BatchNorm(_temp2, w[layer.Gamma], w[layer.Beta], _temp1);
+                Math.Blend(w1[l.Kernel], w2[l.Kernel], MixParameter, _temp3);
+                Math.Blend(w1[l.Bias  ], w2[l.Bias  ], MixParameter, _temp4);
+                Math.Deconv2D(_temp1, _temp3, _temp4, _temp2);
+                Math.Blend(w1[l.Gamma], w2[l.Gamma], MixParameter, _temp3);
+                Math.Blend(w1[l.Beta ], w2[l.Beta ], MixParameter, _temp4);
+                Math.BatchNorm(_temp2, _temp3, _temp4, _temp1);
             }
 
             for (var i = 6; i > 0; i--)
             {
-                var layer = _decoders[i];
-                var w = edge > i ? WeightTable2 : WeightTable1;
+                var l = _decoders[i];
                 Math.Concat(_temp1, _skip[i], _temp2);
                 Math.Relu(_temp2, _temp1);
-                Math.Deconv2D(_temp1, w[layer.Kernel], w[layer.Bias], _temp2);
-                Math.BatchNorm(_temp2, w[layer.Gamma], w[layer.Beta], _temp1);
+                Math.Blend(w1[l.Kernel], w2[l.Kernel], MixParameter, _temp3);
+                Math.Blend(w1[l.Bias  ], w2[l.Bias  ], MixParameter, _temp4);
+                Math.Deconv2D(_temp1, _temp3, _temp4, _temp2);
+                Math.Blend(w1[l.Gamma], w2[l.Gamma], MixParameter, _temp3);
+                Math.Blend(w1[l.Beta ], w2[l.Beta ], MixParameter, _temp4);
+                Math.BatchNorm(_temp2, _temp3, _temp4, _temp1);
             }
 
             {
-                var layer = _decoders[0];
-                var w = edge > 0 ? WeightTable2 : WeightTable1;
+                var l = _decoders[0];
                 Math.Concat(_temp1, _skip[0], _temp2);
                 Math.Relu(_temp2, _temp1);
-                Math.Deconv2D(_temp1, w[layer.Kernel], w[layer.Bias], _temp2);
+                Math.Blend(w1[l.Kernel], w2[l.Kernel], MixParameter, _temp3);
+                Math.Blend(w1[l.Bias  ], w2[l.Bias  ], MixParameter, _temp4);
+                Math.Deconv2D(_temp1, _temp3, _temp4, _temp2);
                 Math.Tanh(_temp2, _temp1);
             }
 

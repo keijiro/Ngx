@@ -9,9 +9,9 @@ namespace Pix2PixFeedback
 
         [SerializeField, Range(0, 1)] float _mixParameter = 0;
         [SerializeField, Range(0, 2)] float _feedbackRate = 1;
-        [SerializeField, Range(0.01f, 2)] float _transitionTime = 0.5f;
         [SerializeField, Range(0, 1)] float _noiseInjection = 0;
-        [SerializeField, Range(0, 16)] int _modelIndex = 0;
+        [SerializeField, Range(0, 16)] int _modelIndex1 = 0;
+        [SerializeField, Range(0, 16)] int _modelIndex2 = 1;
         [SerializeField] string [] _modelFiles = null;
         [SerializeField, HideInInspector] Shader _shader = null;
 
@@ -24,9 +24,6 @@ namespace Pix2PixFeedback
 
         RenderTexture _tempRT, _delayRT, _backRT;
         Material _material;
-
-        int _prevModelIndex;
-        float _transition;
 
         string GetModelFilePath(int index)
         {
@@ -58,9 +55,6 @@ namespace Pix2PixFeedback
             _backRT .Create();
 
             _material = new Material(_shader);
-
-            _prevModelIndex = _modelIndex;
-            _transition = 1e+5f;
         }
 
         void OnDestroy()
@@ -78,20 +72,8 @@ namespace Pix2PixFeedback
 
         void Update()
         {
-            // Was the model changed?
-            if (_modelIndex != _prevModelIndex)
-            {
-                _transition = 0; // Start fade-in
-                _prevModelIndex = _modelIndex;
-            }
-
-            // Transition animation
-            _transition += Time.deltaTime;
-
             // Blending parameters
-           //var alpha = Mathf.Clamp01(_transition / _transitionTime);
-            var alpha = _mixParameter > 0.01f ? Mathf.Clamp01(0.5f + _mixParameter / 2) : 1;
-            var blendParams = new Vector3(_noiseInjection, 1 - alpha, alpha);
+            var blendParams = new Vector3(_noiseInjection, 0, 1);
             blendParams *= _feedbackRate;
             _material.SetVector("_BlendParams", blendParams);
 
@@ -99,8 +81,8 @@ namespace Pix2PixFeedback
             Graphics.Blit(_delayRT, _tempRT, _material, 0);
 
             // Set the currently selected model to the generator.
-            _generator.WeightTable1 = _models[(_modelIndex + 0) % _models.Length];
-            _generator.WeightTable2 = _models[(_modelIndex + 1) % _models.Length];
+            _generator.WeightTable1 = _models[_modelIndex1 % _models.Length];
+            _generator.WeightTable2 = _models[_modelIndex2 % _models.Length];
 
             // Pix2Pix generation
             _generator.MixParameter = _mixParameter;

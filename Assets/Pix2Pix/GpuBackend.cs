@@ -166,6 +166,32 @@ namespace Pix2Pix
             );
         }
 
+        internal static void InvokeBlend
+            (Tensor input1, Tensor input2, float param, Tensor output)
+        {
+            var length = input1.Buffer.count;
+
+            Debug.Assert(input2.Buffer.count == length);
+            Debug.Assert(output.Buffer.count == length);
+
+            var kernelName =
+                length == 3 ? "Blend_3" : (length < 512 ? "Blend_64" : "Blend_512");
+
+            var compute = _instance._computeAssets.Concat;
+            var kernel = compute.FindKernel(kernelName);
+            var threadCount = compute.GetThreadGroupSizeVector(kernel);
+
+            Debug.Assert(length % threadCount.x == 0);
+
+            var cb = SharedCommandBuffer;
+            cb.SetComputeFloatParam(compute, "Parameter", param);
+            cb.SetComputeBufferParam(compute, kernel, "Input1", input1.Buffer);
+            cb.SetComputeBufferParam(compute, kernel, "Input2", input2.Buffer);
+            cb.SetComputeBufferParam(compute, kernel, "Output", output.Buffer);
+
+            cb.DispatchCompute(compute, kernel, length / threadCount.x, 1, 1);
+        }
+
         internal static void InvokeBatchNorm
             (Tensor input, Tensor scale, Tensor offset, Tensor output)
         {

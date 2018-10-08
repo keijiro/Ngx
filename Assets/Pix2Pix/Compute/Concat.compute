@@ -4,6 +4,9 @@
 #pragma enable_d3d11_debug_symbols
 
 #pragma kernel Concat
+#pragma kernel Blend_3
+#pragma kernel Blend_64
+#pragma kernel Blend_512
 
 Buffer<float> Input1;
 Buffer<float> Input2;
@@ -22,3 +25,17 @@ void Concat(uint2 tid : SV_DispatchThreadID)
     Output[offs_o         ] = Input1[offs_i];
     Output[offs_o + stride] = Input2[offs_i];
 }
+
+float Parameter;
+
+[numthreads(3, 1, 1)]
+void Blend_3(uint id : SV_DispatchThreadID)
+{ Output[id] = lerp(Input1[id], Input2[id], Parameter); }
+
+[numthreads(64, 1, 1)]
+void Blend_64(uint id : SV_DispatchThreadID)
+{ Output[id] = lerp(Input1[id], Input2[id], Parameter); }
+
+[numthreads(512, 1, 1)]
+void Blend_512(uint id : SV_DispatchThreadID)
+{ Output[id] = lerp(Input1[id], Input2[id], Parameter); }
