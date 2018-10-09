@@ -2,3 +2,7 @@
 	path = Packages/jp.keijiro.kino.post-processing
 	url = git@github.com:keijiro/Kino.git
 	branch = upm
+[submodule "Packages/jp.keijiro.midi-jack"]
+	path = Packages/jp.keijiro.midi-jack
+	url = git@github.com:keijiro/MidiJack.git
+	branch = upm
