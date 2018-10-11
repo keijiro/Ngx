@@ -13,13 +13,21 @@ Shader "Hidden/Ngx/Feedback"
 
     sampler2D _MainTex;
 
-    half4 _FeedbackParams; // feedback rate, noise frequency/speed/strength
+    half _FeedbackRate;
+    half3 _NoiseParams1; // frequency, speed, amplitude
+    half3 _NoiseParams2;
+    half3 _NoiseParams3;
 
     half4 FragmentInject(v2f_img i) : SV_Target
     {
-        half4 c = tex2D(_MainTex, i.uv) * _FeedbackParams.x;
-        half n = snoise(float3(i.uv, _Time.y) * _FeedbackParams.yyz);
-        return saturate(c + n * _FeedbackParams.w);
+        half4 c = tex2D(_MainTex, i.uv) * _FeedbackRate;
+
+        float3 np = float3(i.uv, _Time.y);
+        half n1 = snoise(np * _NoiseParams1.xxy) * _NoiseParams1.z;
+        half n2 = snoise(np * _NoiseParams2.xxy) * _NoiseParams2.z;
+        half n3 = snoise(np * _NoiseParams3.xxy) * _NoiseParams3.z;
+
+        return clamp(c + n1 + n2 + n3, -100, 100);
     }
 
     void VertexBlit(

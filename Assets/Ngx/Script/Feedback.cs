@@ -13,7 +13,9 @@ namespace Ngx
         [SerializeField, Range(0, 1)] float _mixParameter = 0;
         [Space]
         [SerializeField, Range(0, 2)] float _feedbackRate = 1;
-        [SerializeField, Range(0, 1)] float _noiseInjection = 0;
+        [SerializeField, Range(0, 1)] float _noiseInjection1 = 0;
+        [SerializeField, Range(0, 1)] float _noiseInjection2 = 0;
+        [SerializeField, Range(0, 1)] float _noiseInjection3 = 0;
         [Space]
         [SerializeField] string [] _modelFiles = null;
         [SerializeField, HideInInspector] Shader _shader = null;
@@ -42,9 +44,19 @@ namespace Ngx
             set { _feedbackRate = value; }
         }
 
-        public float NoiseInjection {
-            get { return _noiseInjection; }
-            set { _noiseInjection = value; }
+        public float NoiseInjection1 {
+            get { return _noiseInjection1; }
+            set { _noiseInjection1 = value; }
+        }
+
+        public float NoiseInjection2 {
+            get { return _noiseInjection2; }
+            set { _noiseInjection2 = value; }
+        }
+
+        public float NoiseInjection3 {
+            get { return _noiseInjection3; }
+            set { _noiseInjection3 = value; }
         }
 
         #endregion
@@ -96,8 +108,10 @@ namespace Ngx
             var tempRT = RenderTexture.GetTemporary(256, 256, 0, _feedback.format);
 
             // Feedback shader
-            _material.SetVector("_FeedbackParams", new Vector4(
-                _feedbackRate, 64 /* n-frq */, 2 /* n-spd */, _noiseInjection));
+            _material.SetFloat("_FeedbackRate", _feedbackRate);
+            _material.SetVector("_NoiseParams1", new Vector3(0.72f, 5.3f, _noiseInjection1));
+            _material.SetVector("_NoiseParams2", new Vector3(33.3f, 3.4f, _noiseInjection2));
+            _material.SetVector("_NoiseParams3", new Vector3(62.5f, 2.9f, _noiseInjection3));
             Graphics.Blit(_feedback, tempRT, _material, 0);
 
             // Pix2Pix generation

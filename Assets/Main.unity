@@ -122,11 +122,9 @@ GameObject:
   m_Component:
   - component: {fileID: 365078053}
   - component: {fileID: 365078057}
-  - component: {fileID: 365078056}
-  - component: {fileID: 365078055}
   - component: {fileID: 365078054}
   m_Layer: 0
-  m_Name: Total Parameters
+  m_Name: Post Fx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,7 +142,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1350953452}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &365078054
 MonoBehaviour:
@@ -175,64 +173,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Ngx.MidiKnobEventReceiver+FloatEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &365078055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 365078052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f2ff6cb50fc0f54c9566db04d9af6e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _controlID: 83
-  _knobEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 776052851}
-        m_MethodName: set_Weight
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: Ngx.MidiKnobEventReceiver+FloatEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
---- !u!114 &365078056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 365078052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f2ff6cb50fc0f54c9566db04d9af6e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _controlID: 82
-  _knobEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1536599202}
-        m_MethodName: set_Weight
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: Ngx.MidiKnobEventReceiver+FloatEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &365078057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f2ff6cb50fc0f54c9566db04d9af6e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controlID: 81
+  _controlID: 83
   _knobEvent:
     m_PersistentCalls:
       m_Calls:
@@ -603,7 +543,7 @@ GameObject:
   - component: {fileID: 1070577190}
   - component: {fileID: 1070577189}
   m_Layer: 0
-  m_Name: Model Select 2a
+  m_Name: Model Select 1a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -640,7 +580,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex2
+        m_MethodName: set_ModelIndex1
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -674,7 +614,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex2
+        m_MethodName: set_ModelIndex1
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -708,7 +648,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex2
+        m_MethodName: set_ModelIndex1
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -742,7 +682,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex2
+        m_MethodName: set_ModelIndex1
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -776,7 +716,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex2
+        m_MethodName: set_ModelIndex1
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -810,7 +750,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex2
+        m_MethodName: set_ModelIndex1
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -844,7 +784,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex2
+        m_MethodName: set_ModelIndex1
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -878,7 +818,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex2
+        m_MethodName: set_ModelIndex1
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1012,6 +952,246 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1177406696
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1177406697}
+  - component: {fileID: 1177406698}
+  - component: {fileID: 1177406700}
+  - component: {fileID: 1177406699}
+  m_Layer: 0
+  m_Name: Noise Injection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1177406697
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177406696}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1350953452}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1177406698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177406696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f2ff6cb50fc0f54c9566db04d9af6e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _controlID: 78
+  _knobEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1335466532}
+        m_MethodName: set_NoiseInjection1
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Ngx.MidiKnobEventReceiver+FloatEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1177406699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177406696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f2ff6cb50fc0f54c9566db04d9af6e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _controlID: 80
+  _knobEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1335466532}
+        m_MethodName: set_NoiseInjection3
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Ngx.MidiKnobEventReceiver+FloatEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1177406700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177406696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f2ff6cb50fc0f54c9566db04d9af6e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _controlID: 79
+  _knobEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1335466532}
+        m_MethodName: set_NoiseInjection2
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Ngx.MidiKnobEventReceiver+FloatEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!1 &1282744253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1282744254}
+  - component: {fileID: 1282744257}
+  - component: {fileID: 1282744256}
+  - component: {fileID: 1282744255}
+  m_Layer: 0
+  m_Name: Amplifier
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1282744254
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282744253}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1350953452}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1282744255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282744253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0802d394a86840f4a9cccf0dd836aa9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bias: 1
+  _target:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1335466532}
+        m_MethodName: set_FeedbackRate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Ngx.NegPosController+FloatEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1282744256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282744253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f2ff6cb50fc0f54c9566db04d9af6e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _controlID: 82
+  _knobEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1282744255}
+        m_MethodName: set_PositiveInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Ngx.MidiKnobEventReceiver+FloatEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1282744257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282744253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f2ff6cb50fc0f54c9566db04d9af6e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _controlID: 81
+  _knobEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1282744255}
+        m_MethodName: set_NegativeInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Ngx.MidiKnobEventReceiver+FloatEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1290675442
 GameObject:
   m_ObjectHideFlags: 0
@@ -1196,7 +1376,7 @@ GameObject:
   - component: {fileID: 1305600643}
   - component: {fileID: 1305600642}
   m_Layer: 0
-  m_Name: Model Select 2b
+  m_Name: Model Select 1b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1233,7 +1413,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex2
+        m_MethodName: set_ModelIndex1
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1267,7 +1447,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex2
+        m_MethodName: set_ModelIndex1
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1301,7 +1481,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex2
+        m_MethodName: set_ModelIndex1
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1335,7 +1515,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex2
+        m_MethodName: set_ModelIndex1
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1369,7 +1549,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex2
+        m_MethodName: set_ModelIndex1
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1403,7 +1583,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex2
+        m_MethodName: set_ModelIndex1
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1437,7 +1617,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex2
+        m_MethodName: set_ModelIndex1
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1471,7 +1651,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex2
+        m_MethodName: set_ModelIndex1
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1521,10 +1701,26 @@ MonoBehaviour:
   _modelIndex2: 1
   _mixParameter: 0
   _feedbackRate: 1
-  _noiseInjection: 0
+  _noiseInjection1: 0
+  _noiseInjection2: 0
+  _noiseInjection3: 0
   _modelFiles:
   - beeple1
   - beeple2
+  - beeple4
+  - beeple6
+  - beeple7
+  - beeple8
+  - beeple9
+  - beeple10
+  - beeple11
+  - explosion
+  - firedance
+  - fireworks
+  - flame
+  - fluid1
+  - splash
+  - train
   _shader: {fileID: 4800000, guid: b0b6ed0a8d22bb94a815325db3e167a3, type: 3}
 --- !u!4 &1335466534
 Transform:
@@ -1574,10 +1770,103 @@ Transform:
   - {fileID: 1070577188}
   - {fileID: 1305600641}
   - {fileID: 1858593358}
+  - {fileID: 1177406697}
+  - {fileID: 1282744254}
   - {fileID: 365078053}
+  - {fileID: 1485436919}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1485436918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1485436919}
+  - component: {fileID: 1485436921}
+  - component: {fileID: 1485436920}
+  m_Layer: 0
+  m_Name: Hue Shift
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1485436919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485436918}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1350953452}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1485436920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485436918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f2ff6cb50fc0f54c9566db04d9af6e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _controlID: 56
+  _knobEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 776052851}
+        m_MethodName: set_Weight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Ngx.MidiKnobEventReceiver+FloatEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1485436921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485436918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f2ff6cb50fc0f54c9566db04d9af6e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _controlID: 55
+  _knobEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1536599202}
+        m_MethodName: set_Weight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Ngx.MidiKnobEventReceiver+FloatEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1536599200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1657,7 +1946,7 @@ GameObject:
   - component: {fileID: 1656186154}
   - component: {fileID: 1656186153}
   m_Layer: 0
-  m_Name: Model Select 1b
+  m_Name: Model Select 2b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1694,7 +1983,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex1
+        m_MethodName: set_ModelIndex2
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1728,7 +2017,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex1
+        m_MethodName: set_ModelIndex2
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1762,7 +2051,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex1
+        m_MethodName: set_ModelIndex2
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1796,7 +2085,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex1
+        m_MethodName: set_ModelIndex2
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1830,7 +2119,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex1
+        m_MethodName: set_ModelIndex2
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1864,7 +2153,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex1
+        m_MethodName: set_ModelIndex2
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1898,7 +2187,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex1
+        m_MethodName: set_ModelIndex2
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1932,7 +2221,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex1
+        m_MethodName: set_ModelIndex2
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2121,7 +2410,7 @@ GameObject:
   - component: {fileID: 1736679200}
   - component: {fileID: 1736679199}
   m_Layer: 0
-  m_Name: Model Select 1a
+  m_Name: Model Select 2a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2158,7 +2447,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex1
+        m_MethodName: set_ModelIndex2
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2192,7 +2481,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex1
+        m_MethodName: set_ModelIndex2
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2226,7 +2515,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex1
+        m_MethodName: set_ModelIndex2
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2260,7 +2549,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex1
+        m_MethodName: set_ModelIndex2
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2294,7 +2583,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex1
+        m_MethodName: set_ModelIndex2
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2328,7 +2617,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex1
+        m_MethodName: set_ModelIndex2
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2362,7 +2651,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex1
+        m_MethodName: set_ModelIndex2
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2396,7 +2685,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335466532}
-        m_MethodName: set_ModelIndex1
+        m_MethodName: set_ModelIndex2
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2484,12 +2773,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1858593358}
   - component: {fileID: 1858593359}
-  - component: {fileID: 1858593360}
-  - component: {fileID: 1858593363}
-  - component: {fileID: 1858593362}
-  - component: {fileID: 1858593361}
   m_Layer: 0
-  m_Name: Feedback Parameters
+  m_Name: Main Mix
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2527,122 +2812,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1335466532}
         m_MethodName: set_MixParameter
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: Ngx.MidiKnobEventReceiver+FloatEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
---- !u!114 &1858593360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858593357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f2ff6cb50fc0f54c9566db04d9af6e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _controlID: 78
-  _knobEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1335466532}
-        m_MethodName: set_NoiseInjection
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: Ngx.MidiKnobEventReceiver+FloatEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
---- !u!114 &1858593361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858593357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0802d394a86840f4a9cccf0dd836aa9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bias: 1
-  _target:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1335466532}
-        m_MethodName: set_FeedbackRate
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: Ngx.NegPosController+FloatEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
---- !u!114 &1858593362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858593357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f2ff6cb50fc0f54c9566db04d9af6e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _controlID: 80
-  _knobEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1858593361}
-        m_MethodName: set_NegativeInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: Ngx.MidiKnobEventReceiver+FloatEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
---- !u!114 &1858593363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858593357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f2ff6cb50fc0f54c9566db04d9af6e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _controlID: 79
-  _knobEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1858593361}
-        m_MethodName: set_PositiveInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
