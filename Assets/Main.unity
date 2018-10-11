@@ -1719,6 +1719,8 @@ MonoBehaviour:
   - fireworks
   - flame
   - fluid1
+  - fluid2
+  - fluid3
   - splash
   - train
   _shader: {fileID: 4800000, guid: b0b6ed0a8d22bb94a815325db3e167a3, type: 3}
