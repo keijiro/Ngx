@@ -3,21 +3,21 @@ using System.Collections.Generic;
 
 namespace Ngx
 {
-    class Feedback : MonoBehaviour
+    public sealed class Feedback : MonoBehaviour
     {
         #region Editable attributes
 
-        [Space]
-        [SerializeField, Range(0, 16)] int _modelIndex1 = 0;
-        [SerializeField, Range(0, 16)] int _modelIndex2 = 1;
+        [SerializeField] int _modelIndex1 = 0;
+        [SerializeField] int _modelIndex2 = 1;
         [SerializeField, Range(0, 1)] float _mixParameter = 0;
-        [Space]
+
         [SerializeField, Range(0, 2)] float _feedbackRate = 1;
         [SerializeField, Range(0, 1)] float _noiseInjection1 = 0;
         [SerializeField, Range(0, 1)] float _noiseInjection2 = 0;
         [SerializeField, Range(0, 1)] float _noiseInjection3 = 0;
-        [Space]
-        [SerializeField] string [] _modelFiles = null;
+
+        [SerializeField] string [] _modelNames = null;
+
         [SerializeField, HideInInspector] Shader _shader = null;
 
         #endregion
@@ -69,10 +69,11 @@ namespace Ngx
         RenderTexture _feedback;
         Material _material;
 
-        string GetModelFilePath(int index)
+        Dictionary<string, Pix2Pix.Tensor> LoadModel(string name)
         {
-            var file = _modelFiles[index] + ".pict";
-            return System.IO.Path.Combine(Application.streamingAssetsPath, file);
+            var path = System.IO.Path.Combine(
+                Application.streamingAssetsPath, name + ".pict");
+            return Pix2Pix.WeightReader.ReadFromFile(path);
         }
 
         #endregion
@@ -81,10 +82,14 @@ namespace Ngx
 
         void Start()
         {
-            _models = new Dictionary<string, Pix2Pix.Tensor>[_modelFiles.Length];
+            _models = new Dictionary<string, Pix2Pix.Tensor>[_modelNames.Length];
 
-            for (var i = 0; i < _modelFiles.Length; i++)
-                _models[i] = Pix2Pix.WeightReader.ReadFromFile(GetModelFilePath(i));
+            for (var i = 0; i < _modelNames.Length; i++)
+            {
+                var name = _modelNames[i];
+                var prev = System.Array.IndexOf(_modelNames, name);
+                _models[i] = prev < i ? _models[prev] : LoadModel(name);
+            }
 
             _generator = new MixGenerator();
 

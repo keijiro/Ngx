@@ -93,6 +93,7 @@ namespace Pix2Pix
         public static void DisposeTable(Dictionary<string, Tensor> table)
         {
             foreach (var pair in table) pair.Value.Dispose();
+            table.Clear();
         }
 
         #endregion
