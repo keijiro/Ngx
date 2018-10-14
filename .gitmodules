@@ -6,3 +6,7 @@
 	path = Packages/jp.keijiro.midi-jack
 	url = git@github.com:keijiro/MidiJack.git
 	branch = upm
+[submodule "Packages/jp.keijiro.klak.vjui"]
+	path = Packages/jp.keijiro.klak.vjui
+	url = git@github.com:keijiro/VJUI.git
+	branch = upm
