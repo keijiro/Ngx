@@ -7,8 +7,8 @@ namespace Ngx
     {
         #region Editable attributes
 
-        [SerializeField] int _modelIndex1 = 0;
-        [SerializeField] int _modelIndex2 = 1;
+        [SerializeField, Range(0, 7)] int _modelIndex1 = 0;
+        [SerializeField, Range(0, 7)] int _modelIndex2 = 1;
         [SerializeField, Range(0, 1)] float _mixParameter = 0;
 
         [SerializeField, Range(0, 2)] float _feedbackRate = 1;

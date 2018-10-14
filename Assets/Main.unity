@@ -1839,30 +1839,14 @@ MonoBehaviour:
   _noiseInjection2: 0
   _noiseInjection3: 0
   _modelNames:
-  - beeple1
-  - beeple2
-  - beeple6
-  - beeple10
-  - beeple8
-  - train
-  - beeple4
-  - beeple7
-  - firedance
-  - fireworks
-  - explosion
-  - flame
-  - fluid1
-  - fluid2
-  - fluid3
-  - splash
-  - beeple9
-  - beeple12
-  - beeple4
-  - beeple7
-  - dance1
-  - dance2
-  - fluid1
-  - fluid2
+  - Beeple-1
+  - Beeple-2
+  - Beeple-3
+  - Beeple-4
+  - Beeple-5
+  - Beeple-6
+  - Beeple-7
+  - Beeple-8
   _shader: {fileID: 4800000, guid: b0b6ed0a8d22bb94a815325db3e167a3, type: 3}
 --- !u!4 &1335466534
 Transform:
