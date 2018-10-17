@@ -88,7 +88,7 @@ The followings are Colaboratory notebooks I used to train the default models.
 These notebooks are written to use Google Drive as a dataset storage.
 
 - [Video preprocess]: Converts a video clip into AtoB image pairs.
-- [pix2pix-tensorflow]
+- [pix2pix-tensorflow colab]
 - [pix2pix export]: Exports a `.pict` file from a checkpoint of a trained model.
 
 [pix2pix tutorial]: https://ml4a.github.io/guides/Pix2Pix/
@@ -96,7 +96,7 @@ These notebooks are written to use Google Drive as a dataset storage.
 [pix2pix-tensorflow]: https://github.com/affinelayer/pix2pix-tensorflow
 [Google Colaboratory]: https://colab.research.google.com
 [Video preprocess]: https://colab.research.google.com/drive/1-kmaDxXddLILsByglFD0draX5ha0TRIx
-[pix2pix-tensorflow]: https://colab.research.google.com/drive/182CGDnFxt08NmjCCTu5jDweUjn3jhB2y
+[pix2pix-tensorflow colab]: https://colab.research.google.com/drive/182CGDnFxt08NmjCCTu5jDweUjn3jhB2y
 [pix2pix export]: https://colab.research.google.com/drive/1Dc3E6GJ4jjlBIJLaJd--FgKFQGpa_O5N
 
 Frequently asked questions
