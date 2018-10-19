@@ -73,6 +73,24 @@ faders. The 7th and 8th panning knobs are used to tweak the hue shift values.
 
 [Novation Launch Control XL]: https://novationmusic.com/launch/launch-control-xl
 
+How to open the project in Unity
+--------------------------------
+
+This repository uses [Git submodules] to manage dependent packages. To check
+these submodules out, execute `git submodule init && git submodule update` from
+the command line, or specify `--recursive` option when initially cloning.
+
+[Git submodules]: https://blog.github.com/2016-02-01-working-with-submodules/
+
+After cloning the repository, `.pict` (pix2pix weight data) files should be
+manuyally downloaded and copied into the [Streaming Assets] directory because
+these files are excluded from the repository to save bandwidth and storage
+usage. Please download the [pict file package] and extract it into
+`Assets/StreamingAssets`.
+
+[Streaming Assets]: https://docs.unity3d.com/Manual/StreamingAssets.html
+[pict file package]: https://github.com/keijiro/Ngx/releases/download/v1.0.0/Ngx-1.0.0-PictFiles.zip
+
 How to train pix2pix models
 ---------------------------
 
@@ -101,13 +119,6 @@ These notebooks are written to use Google Drive as a dataset storage.
 
 Frequently asked questions
 --------------------------
-
-#### Can't open the project on Unity Editor. ".pict" files are missing.
-
-`.pict` (pix2pix weight data) files are not contained in this repository to
-save bandwidth and storage usage. Please download one of the pre-built
-executables and copy `.pict` files from the `StreamingAssets` directory
-that can be found in the executable package.
 
 #### What are the hardware recommendations?
 
